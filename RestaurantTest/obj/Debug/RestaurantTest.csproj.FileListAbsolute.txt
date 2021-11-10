@@ -1,0 +1,10 @@
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\obj\Debug\RestaurantTest.csproj.AssemblyReference.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\obj\Debug\RestaurantTest.csproj.CoreCompileInputs.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\bin\Debug\RestaurantTest.exe.config
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\bin\Debug\RestaurantTest.exe
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\bin\Debug\RestaurantTest.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\bin\Debug\RestaurantLib.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\bin\Debug\RestaurantLib.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\obj\Debug\RestaurantTest.csproj.CopyComplete
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\obj\Debug\RestaurantTest.exe
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantTest\obj\Debug\RestaurantTest.pdb

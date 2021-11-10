@@ -64,7 +64,7 @@ namespace RestaurantLib
             _times.Add(time);
         }
 
-        public List<Zeitslot> GetZeitslots()
+        public IEnumerable<Zeitslot> GetZeitslots()
         {
             return _times;
         }

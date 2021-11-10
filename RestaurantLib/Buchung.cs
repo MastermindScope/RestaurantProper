@@ -63,5 +63,10 @@ namespace RestaurantLib
             _enthaeltGerichte.Add(gerichtToAdd);
             gerichtToAdd.AddBuchungen(this);
         }
+
+        public IEnumerable<Gericht> GetGerichte()
+        {
+            return _enthaeltGerichte;
+        }
     }
 }

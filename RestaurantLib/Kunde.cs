@@ -79,7 +79,7 @@ namespace RestaurantLib
             _buchungen.Add(buchungToAdd);
         }
 
-        public List<Buchung> GetBuchungen()
+        public IEnumerable<Buchung> GetBuchungen()
         {
             return _buchungen;
         }

@@ -61,7 +61,7 @@ namespace RestaurantLib
             _buchungen.Add(buchungToAdd);
         }
 
-        public List<Buchung> GetBuchungen() //spit out all bookings at this time
+        public IEnumerable<Buchung> GetBuchungen() //spit out all bookings at this time
         {
             return _buchungen;
         }
