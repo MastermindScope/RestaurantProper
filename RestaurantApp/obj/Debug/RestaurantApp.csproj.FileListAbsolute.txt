@@ -1,0 +1,13 @@
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantApp.exe.config
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantApp.exe
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantApp.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLib.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLib.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.csproj.AssemblyReference.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.Form1.resources
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.Properties.Resources.resources
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.csproj.GenerateResource.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.csproj.CoreCompileInputs.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.csproj.CopyComplete
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.exe
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.pdb

@@ -1,0 +1,6 @@
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLib\bin\Debug\RestaurantLib.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLib\bin\Debug\RestaurantLib.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLib\obj\Debug\RestaurantLib.csproj.AssemblyReference.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLib\obj\Debug\RestaurantLib.csproj.CoreCompileInputs.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLib\obj\Debug\RestaurantLib.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLib\obj\Debug\RestaurantLib.pdb
