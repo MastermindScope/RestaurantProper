@@ -7,7 +7,7 @@ using static System.String;
 
 namespace RestaurantLibDB.Extension
 {
-    class GerichtBuilder
+    public class GerichtBuilder
     {
         private string Beschreibung;
         private string Name;

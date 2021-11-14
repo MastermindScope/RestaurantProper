@@ -57,11 +57,15 @@
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Extension\Buchung.cs" />
+    <Compile Include="Extension\BuchungBuilder.cs" />
     <Compile Include="Extension\Filiale.cs" />
+    <Compile Include="Extension\FilialeBuilder.cs" />
     <Compile Include="Extension\Gericht.cs" />
+    <Compile Include="Extension\GerichtBuilder.cs" />
     <Compile Include="Extension\Kunde.cs" />
     <Compile Include="Extension\RestaurantModelContainer.cs" />
     <Compile Include="Extension\Zeitslot.cs" />
+    <Compile Include="Extension\ZeitslotBuilder.cs" />
     <Compile Include="Filiale.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
@@ -71,6 +75,7 @@
     <Compile Include="Kunde.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extension\KundeBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RestaurantModel.Context.cs">
       <AutoGen>True</AutoGen>

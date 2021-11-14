@@ -7,7 +7,7 @@ using static System.String;
 
 namespace RestaurantLibDB.Extension
 {
-    class ZeitslotBuilder
+    public class ZeitslotBuilder
     {
         private DateTime Start;
         private DateTime Ende;
@@ -50,6 +50,7 @@ namespace RestaurantLibDB.Extension
         {
             Zeitslot val = new Zeitslot(Start, Ende, Essensplatz);
             HatBuchungen.ForEach(buch => val.AddBuchungen(buch));
+            Essensplatz.Zeitslots.Add(val);
             return val;
         }
 

@@ -16,35 +16,7 @@ namespace RestaurantLibDB
         private List<Buchung> _enthaltenIn = new List<Buchung>();
 
         //public attributes
-        public string Beschreibung
-        {
-            get { return _beschreibung; }
-            set { if (IsNullOrWhiteSpace(value))
-                {
-                    throw new Exception("Please enter a valid description");
-                } else { _beschreibung = value; }
-            }
-        }
-
-        public string Name
-        {
-            get { return _name; }
-            set { if (IsNullOrWhiteSpace(value)) 
-                {
-                    throw new Exception("Please enter a valid name");
-                } else { _name = value; }
-            }
-        }
-
-        public double Preis
-        {
-            get { return _preis; }
-            set { if ((value*100)%1 != 0)
-                {
-                    throw new Exception ("Can you pay with fractions of a cent? What are you going to do? Cut it in half? Do the customers have to work for a teeny tiny fraction of an hour? Think about it");
-                } else { _preis = value; }
-            }
-        }
+        
 
 
         //constructor

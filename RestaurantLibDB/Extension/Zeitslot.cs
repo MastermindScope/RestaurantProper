@@ -22,7 +22,6 @@ namespace RestaurantLibDB
             Start = start;
             Ende = ende;
             Filiale = essensplatz;
-            essensplatz.AddTimes(this);
         }
 
         //private methods

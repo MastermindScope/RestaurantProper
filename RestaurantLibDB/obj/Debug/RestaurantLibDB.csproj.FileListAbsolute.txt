@@ -1,2 +1,12 @@
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.csproj.AssemblyReference.cache
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.csproj.CoreCompileInputs.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\RestaurantLibDB.dll.config
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\RestaurantLibDB.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\RestaurantLibDB.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\EntityFramework.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\EntityFramework.xml
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.csproj.CopyComplete
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.pdb

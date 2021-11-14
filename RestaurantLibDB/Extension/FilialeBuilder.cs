@@ -7,7 +7,7 @@ using static System.String;
 
 namespace RestaurantLibDB.Extension
 {
-    class FilialeBuilder
+    public class FilialeBuilder
     {
         private string Name;
         private string Ort;
@@ -42,7 +42,7 @@ namespace RestaurantLibDB.Extension
         public Filiale build()
         {
             Filiale val = new Filiale(Name, Ort, Beschreibung);
-            Zeitslots.ForEach(zs => val.AddTimes(zs));
+            Zeitslots.ForEach(zs => val.Zeitslots.Add(zs));
             return val;
         }
 

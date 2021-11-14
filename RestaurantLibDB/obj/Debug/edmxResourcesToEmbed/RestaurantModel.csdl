@@ -49,7 +49,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Buchungsnummmer" Type="String" Nullable="false" />
-    <Property Name="Personen" Type="Int16" Nullable="false" />
+    <Property Name="Personen" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Um" Relationship="RestaurantModel.BuchungsZeit" FromRole="Buchung" ToRole="Zeitslot" />
     <Property Name="ZeitslotId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="EnthaeltGerichte" Relationship="RestaurantModel.EnthaeltGericht" FromRole="Buchung" ToRole="Gericht" />

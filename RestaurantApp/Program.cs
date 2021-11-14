@@ -21,6 +21,7 @@ namespace RestaurantApp
 
 
             //add demo data
+            /*
             Filiale nbg = new Filiale("Filiale Nürnberg-HBF", "Nürnberg", "Filiale am Hauptnahnhof Nürnberg");
             Filiale KA = new Filiale("Filiala Karlsruhe-Kronenplatz", "Karlsruhe", "Filiale am Kronenplatz in Karlsruhe");
 
@@ -36,7 +37,7 @@ namespace RestaurantApp
 
             peterKauftEin.AddGericht(pommes);
             peterKauftEin.AddGericht(pommes);
-            peterKauftEin.AddGericht(hamberder);
+            peterKauftEin.AddGericht(hamberder);*/
         }
     }
 }

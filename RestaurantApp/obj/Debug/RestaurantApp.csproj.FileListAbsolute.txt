@@ -1,8 +1,6 @@
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantApp.exe.config
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantApp.exe
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantApp.pdb
-C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLib.dll
-C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLib.pdb
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.csproj.AssemblyReference.cache
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.Form1.resources
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.Properties.Resources.resources
@@ -11,3 +9,10 @@ C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\R
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.csproj.CopyComplete
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.exe
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\EntityFramework.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLibDB.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLibDB.pdb
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLibDB.dll.config
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\EntityFramework.xml
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\EntityFramework.SqlServer.xml
