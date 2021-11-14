@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RestaurantModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="RestaurantModelStoreContainer">
+    <EntitySet Name="Filialen" EntityType="RestaurantModel.Store.Filialen" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kunden" EntityType="RestaurantModel.Store.Kunden" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bestellungen" EntityType="RestaurantModel.Store.Bestellungen" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Zeitslots" EntityType="RestaurantModel.Store.Zeitslots" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Gerichte" EntityType="RestaurantModel.Store.Gerichte" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EnthaeltGericht" EntityType="RestaurantModel.Store.EnthaeltGericht" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GebuchtUm" Association="RestaurantModel.Store.GebuchtUm">
+      <End Role="Filiale" EntitySet="Filialen" />
+      <End Role="Zeitslot" EntitySet="Zeitslots" />
+    </AssociationSet>
+    <AssociationSet Name="BuchungsZeit" Association="RestaurantModel.Store.BuchungsZeit">
+      <End Role="Zeitslot" EntitySet="Zeitslots" />
+      <End Role="Buchung" EntitySet="Bestellungen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnthaeltGericht_Buchung" Association="RestaurantModel.Store.FK_EnthaeltGericht_Buchung">
+      <End Role="Buchung" EntitySet="Bestellungen" />
+      <End Role="EnthaeltGericht" EntitySet="EnthaeltGericht" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnthaeltGericht_Gericht" Association="RestaurantModel.Store.FK_EnthaeltGericht_Gericht">
+      <End Role="Gericht" EntitySet="Gerichte" />
+      <End Role="EnthaeltGericht" EntitySet="EnthaeltGericht" />
+    </AssociationSet>
+    <AssociationSet Name="GebuchtVon" Association="RestaurantModel.Store.GebuchtVon">
+      <End Role="Buchung" EntitySet="Bestellungen" />
+      <End Role="Kunde" EntitySet="Kunden" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Filialen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Beschreibung" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Ort" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kunden">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Vorname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kundennummer" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bestellungen">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Buchungsnummmer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Personen" Type="smallint" Nullable="false" />
+    <Property Name="ZeitslotId" Type="int" Nullable="false" />
+    <Property Name="KundeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zeitslots">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Start" Type="datetime" Nullable="false" />
+    <Property Name="Ende" Type="datetime" Nullable="false" />
+    <Property Name="Filiale_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Gerichte">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EnthaeltGericht">
+    <Key>
+      <PropertyRef Name="EnthaltenIn_Id" />
+      <PropertyRef Name="EnthaeltGerichte_Id" />
+    </Key>
+    <Property Name="EnthaltenIn_Id" Type="int" Nullable="false" />
+    <Property Name="EnthaeltGerichte_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="GebuchtUm">
+    <End Role="Filiale" Type="RestaurantModel.Store.Filialen" Multiplicity="1" />
+    <End Role="Zeitslot" Type="RestaurantModel.Store.Zeitslots" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filiale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Zeitslot">
+        <PropertyRef Name="Filiale_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="BuchungsZeit">
+    <End Role="Zeitslot" Type="RestaurantModel.Store.Zeitslots" Multiplicity="1" />
+    <End Role="Buchung" Type="RestaurantModel.Store.Bestellungen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zeitslot">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buchung">
+        <PropertyRef Name="ZeitslotId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GebuchtVon">
+    <End Role="Buchung" Type="RestaurantModel.Store.Bestellungen" Multiplicity="*" />
+    <End Role="Kunde" Type="RestaurantModel.Store.Kunden" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kunde">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buchung">
+        <PropertyRef Name="KundeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnthaeltGericht_Buchung">
+    <End Role="Buchung" Type="RestaurantModel.Store.Bestellungen" Multiplicity="1" />
+    <End Role="EnthaeltGericht" Type="RestaurantModel.Store.EnthaeltGericht" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Buchung">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EnthaeltGericht">
+        <PropertyRef Name="EnthaltenIn_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnthaeltGericht_Gericht">
+    <End Role="EnthaeltGericht" Type="RestaurantModel.Store.EnthaeltGericht" Multiplicity="*" />
+    <End Role="Gericht" Type="RestaurantModel.Store.Gerichte" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Gericht">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EnthaeltGericht">
+        <PropertyRef Name="EnthaeltGerichte_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RestaurantModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="RestaurantModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Filialen" EntityType="RestaurantModel.Filiale" />
+          <EntitySet Name="Kunden" EntityType="RestaurantModel.Kunde" />
+          <EntitySet Name="Bestellungen" EntityType="RestaurantModel.Buchung" />
+          <EntitySet Name="Zeitslots" EntityType="RestaurantModel.Zeitslot" />
+          <EntitySet Name="Gerichte" EntityType="RestaurantModel.Gericht" />
+          <AssociationSet Name="GebuchtUm" Association="RestaurantModel.GebuchtUm">
+            <End Role="Filiale" EntitySet="Filialen" />
+            <End Role="Zeitslot" EntitySet="Zeitslots" />
+          </AssociationSet>
+          <AssociationSet Name="BuchungsZeit" Association="RestaurantModel.BuchungsZeit">
+            <End Role="Zeitslot" EntitySet="Zeitslots" />
+            <End Role="Buchung" EntitySet="Bestellungen" />
+          </AssociationSet>
+          <AssociationSet Name="EnthaeltGericht" Association="RestaurantModel.EnthaeltGericht">
+            <End Role="Buchung" EntitySet="Bestellungen" />
+            <End Role="Gericht" EntitySet="Gerichte" />
+          </AssociationSet>
+          <AssociationSet Name="GebuchtVon" Association="RestaurantModel.GebuchtVon">
+            <End Role="Buchung" EntitySet="Bestellungen" />
+            <End Role="Kunde" EntitySet="Kunden" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Filiale">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Beschreibung" Type="String" Nullable="false" />
+          <Property Name="Ort" Type="String" Nullable="false" />
+          <NavigationProperty Name="Zeitslots" Relationship="RestaurantModel.GebuchtUm" FromRole="Filiale" ToRole="Zeitslot" />
+        </EntityType>
+        <EntityType Name="Kunde">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Vorname" Type="String" Nullable="false" />
+          <Property Name="Kundennummer" Type="String" Nullable="false" />
+          <NavigationProperty Name="HatGebucht" Relationship="RestaurantModel.GebuchtVon" FromRole="Kunde" ToRole="Buchung" />
+        </EntityType>
+        <EntityType Name="Buchung">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Buchungsnummmer" Type="String" Nullable="false" />
+          <Property Name="Personen" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Um" Relationship="RestaurantModel.BuchungsZeit" FromRole="Buchung" ToRole="Zeitslot" />
+          <Property Name="ZeitslotId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EnthaeltGerichte" Relationship="RestaurantModel.EnthaeltGericht" FromRole="Buchung" ToRole="Gericht" />
+          <NavigationProperty Name="GebuchtVon" Relationship="RestaurantModel.GebuchtVon" FromRole="Buchung" ToRole="Kunde" />
+          <Property Name="KundeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zeitslot">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Start" Type="DateTime" Nullable="false" />
+          <Property Name="Ende" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Filiale" Relationship="RestaurantModel.GebuchtUm" FromRole="Zeitslot" ToRole="Filiale" />
+          <NavigationProperty Name="HatBuchungen" Relationship="RestaurantModel.BuchungsZeit" FromRole="Zeitslot" ToRole="Buchung" />
+        </EntityType>
+        <EntityType Name="Gericht">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="EnthaltenIn" Relationship="RestaurantModel.EnthaeltGericht" FromRole="Gericht" ToRole="Buchung" />
+        </EntityType>
+        <Association Name="GebuchtUm">
+          <End Type="RestaurantModel.Filiale" Role="Filiale" Multiplicity="1" />
+          <End Type="RestaurantModel.Zeitslot" Role="Zeitslot" Multiplicity="*" />
+        </Association>
+        <Association Name="BuchungsZeit">
+          <End Type="RestaurantModel.Zeitslot" Role="Zeitslot" Multiplicity="1" />
+          <End Type="RestaurantModel.Buchung" Role="Buchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zeitslot">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buchung">
+              <PropertyRef Name="ZeitslotId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EnthaeltGericht">
+          <End Type="RestaurantModel.Buchung" Role="Buchung" Multiplicity="*" />
+          <End Type="RestaurantModel.Gericht" Role="Gericht" Multiplicity="*" />
+        </Association>
+        <Association Name="GebuchtVon">
+          <End Type="RestaurantModel.Buchung" Role="Buchung" Multiplicity="*" />
+          <End Type="RestaurantModel.Kunde" Role="Kunde" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Kunde">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Buchung">
+              <PropertyRef Name="KundeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantModelContainer">
+    <EntitySetMapping Name="Filialen">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Filiale)">
+        <MappingFragment StoreEntitySet="Filialen">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+          <ScalarProperty Name="Ort" ColumnName="Ort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kunden">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Kunde)">
+        <MappingFragment StoreEntitySet="Kunden">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+          <ScalarProperty Name="Kundennummer" ColumnName="Kundennummer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bestellungen">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Buchung)">
+        <MappingFragment StoreEntitySet="Bestellungen">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Buchungsnummmer" ColumnName="Buchungsnummmer" />
+          <ScalarProperty Name="Personen" ColumnName="Personen" />
+          <ScalarProperty Name="ZeitslotId" ColumnName="ZeitslotId" />
+          <ScalarProperty Name="KundeId" ColumnName="KundeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zeitslots">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Zeitslot)">
+        <MappingFragment StoreEntitySet="Zeitslots">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Ende" ColumnName="Ende" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gerichte">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Gericht)">
+        <MappingFragment StoreEntitySet="Gerichte">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GebuchtUm" TypeName="RestaurantModel.GebuchtUm" StoreEntitySet="Zeitslots">
+      <EndProperty Name="Filiale">
+        <ScalarProperty Name="Id" ColumnName="Filiale_Id" />
+      </EndProperty>
+      <EndProperty Name="Zeitslot">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EnthaeltGericht" TypeName="RestaurantModel.EnthaeltGericht" StoreEntitySet="EnthaeltGericht">
+      <EndProperty Name="Buchung">
+        <ScalarProperty Name="Id" ColumnName="EnthaltenIn_Id" />
+      </EndProperty>
+      <EndProperty Name="Gericht">
+        <ScalarProperty Name="Id" ColumnName="EnthaeltGerichte_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
