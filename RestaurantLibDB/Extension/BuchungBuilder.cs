@@ -15,6 +15,7 @@ namespace RestaurantLibDB.Extension
         private Kunde GebuchtVon;
         private int Personen;
 
+
         public BuchungBuilder setBuchungsNummer(string buchungsNummer)
         {
             if (IsNullOrWhiteSpace(buchungsNummer))
@@ -31,7 +32,37 @@ namespace RestaurantLibDB.Extension
             } else { Essenszeit = essenszeit;  return this; }
         }
 
-        public BuchungBuilder gebuchtVon(Kunde )
+        public BuchungBuilder gebuchtVon(Kunde buchender)
+        {
+            if(buchender == null)
+            {
+                throw new Exception("Find someone who actually wants to eat here!");
+            } else { GebuchtVon = buchender; return this; }
+        }
+
+        public BuchungBuilder setPersonen(int anzahl)
+        {
+            if(anzahl == 0)
+            {
+                throw new Exception("Do you usually go to dinner or lunch with minus one of your friends?");
+            } else { Personen = anzahl; return this; }
+        }
+
+        public BuchungBuilder addGericht(Gericht happahappa)
+        {
+            if(happahappa == null)
+            {
+                throw new Exception("Don't you do this because you're hungry?");
+            } else { EnthaeltGerichte.Add(happahappa); return this; }
+        }
+
+
+        public Buchung build()
+        {
+            Buchung val = new Buchung(Essenszeit, GebuchtVon, Buchungsnummer, Personen);
+            EnthaeltGerichte.ForEach(ger => val.AddGericht(ger));
+            return val;
+        }
 
 
     }
