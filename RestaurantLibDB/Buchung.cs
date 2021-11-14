@@ -22,7 +22,7 @@ namespace RestaurantLibDB
     
         public int Id { get; set; }
         public string Buchungsnummmer { get; set; }
-        public short Personen { get; set; }
+        public int Personen { get; set; }
         public int ZeitslotId { get; set; }
         public int KundeId { get; set; }
     
