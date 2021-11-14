@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.String;
 
-namespace RestaurantLib
+namespace RestaurantLibDB
 {
-    public class Filiale
+    public partial class Filiale
     {
         //private attributes
         private string _name;

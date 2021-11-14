@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="RestaurantModelStoreContainer" CdmEntityContainer="RestaurantModelContainer">
+    <EntitySetMapping Name="Filialen">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Filiale)">
+        <MappingFragment StoreEntitySet="Filialen">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+          <ScalarProperty Name="Ort" ColumnName="Ort" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kunden">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Kunde)">
+        <MappingFragment StoreEntitySet="Kunden">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+          <ScalarProperty Name="Kundennummer" ColumnName="Kundennummer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bestellungen">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Buchung)">
+        <MappingFragment StoreEntitySet="Bestellungen">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Buchungsnummmer" ColumnName="Buchungsnummmer" />
+          <ScalarProperty Name="Personen" ColumnName="Personen" />
+          <ScalarProperty Name="ZeitslotId" ColumnName="ZeitslotId" />
+          <ScalarProperty Name="KundeId" ColumnName="KundeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zeitslots">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Zeitslot)">
+        <MappingFragment StoreEntitySet="Zeitslots">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Start" ColumnName="Start" />
+          <ScalarProperty Name="Ende" ColumnName="Ende" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gerichte">
+      <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Gericht)">
+        <MappingFragment StoreEntitySet="Gerichte">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+          <ScalarProperty Name="Preis" ColumnName="Preis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GebuchtUm" TypeName="RestaurantModel.GebuchtUm" StoreEntitySet="Zeitslots">
+      <EndProperty Name="Filiale">
+        <ScalarProperty Name="Id" ColumnName="Filiale_Id" />
+      </EndProperty>
+      <EndProperty Name="Zeitslot">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="EnthaeltGericht" TypeName="RestaurantModel.EnthaeltGericht" StoreEntitySet="EnthaeltGericht">
+      <EndProperty Name="Buchung">
+        <ScalarProperty Name="Id" ColumnName="EnthaltenIn_Id" />
+      </EndProperty>
+      <EndProperty Name="Gericht">
+        <ScalarProperty Name="Id" ColumnName="EnthaeltGerichte_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

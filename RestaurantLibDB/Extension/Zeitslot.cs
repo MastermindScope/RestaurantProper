@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RestaurantLib
+namespace RestaurantLibDB
 {
-    public class Zeitslot
+    public partial class Zeitslot
     {
         //private attributes
         private DateTime _start;

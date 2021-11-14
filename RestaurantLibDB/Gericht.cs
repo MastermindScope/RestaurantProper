@@ -21,6 +21,9 @@ namespace RestaurantLibDB
         }
     
         public int Id { get; set; }
+        public string Name { get; set; }
+        public string Beschreibung { get; set; }
+        public double Preis { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Buchung> EnthaltenIn { get; set; }

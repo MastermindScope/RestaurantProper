@@ -1,0 +1,2 @@
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.csproj.AssemblyReference.cache
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\obj\Debug\RestaurantLibDB.csproj.CoreCompileInputs.cache

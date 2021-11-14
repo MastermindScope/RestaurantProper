@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RestaurantModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="RestaurantModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Filialen" EntityType="RestaurantModel.Filiale" />
+    <EntitySet Name="Kunden" EntityType="RestaurantModel.Kunde" />
+    <EntitySet Name="Bestellungen" EntityType="RestaurantModel.Buchung" />
+    <EntitySet Name="Zeitslots" EntityType="RestaurantModel.Zeitslot" />
+    <EntitySet Name="Gerichte" EntityType="RestaurantModel.Gericht" />
+    <AssociationSet Name="GebuchtUm" Association="RestaurantModel.GebuchtUm">
+      <End Role="Filiale" EntitySet="Filialen" />
+      <End Role="Zeitslot" EntitySet="Zeitslots" />
+    </AssociationSet>
+    <AssociationSet Name="BuchungsZeit" Association="RestaurantModel.BuchungsZeit">
+      <End Role="Zeitslot" EntitySet="Zeitslots" />
+      <End Role="Buchung" EntitySet="Bestellungen" />
+    </AssociationSet>
+    <AssociationSet Name="EnthaeltGericht" Association="RestaurantModel.EnthaeltGericht">
+      <End Role="Buchung" EntitySet="Bestellungen" />
+      <End Role="Gericht" EntitySet="Gerichte" />
+    </AssociationSet>
+    <AssociationSet Name="GebuchtVon" Association="RestaurantModel.GebuchtVon">
+      <End Role="Buchung" EntitySet="Bestellungen" />
+      <End Role="Kunde" EntitySet="Kunden" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Filiale">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Beschreibung" Type="String" Nullable="false" />
+    <Property Name="Ort" Type="String" Nullable="false" />
+    <NavigationProperty Name="Zeitslots" Relationship="RestaurantModel.GebuchtUm" FromRole="Filiale" ToRole="Zeitslot" />
+  </EntityType>
+  <EntityType Name="Kunde">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Vorname" Type="String" Nullable="false" />
+    <Property Name="Kundennummer" Type="String" Nullable="false" />
+    <NavigationProperty Name="HatGebucht" Relationship="RestaurantModel.GebuchtVon" FromRole="Kunde" ToRole="Buchung" />
+  </EntityType>
+  <EntityType Name="Buchung">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Buchungsnummmer" Type="String" Nullable="false" />
+    <Property Name="Personen" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Um" Relationship="RestaurantModel.BuchungsZeit" FromRole="Buchung" ToRole="Zeitslot" />
+    <Property Name="ZeitslotId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EnthaeltGerichte" Relationship="RestaurantModel.EnthaeltGericht" FromRole="Buchung" ToRole="Gericht" />
+    <NavigationProperty Name="GebuchtVon" Relationship="RestaurantModel.GebuchtVon" FromRole="Buchung" ToRole="Kunde" />
+    <Property Name="KundeId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zeitslot">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Start" Type="DateTime" Nullable="false" />
+    <Property Name="Ende" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Filiale" Relationship="RestaurantModel.GebuchtUm" FromRole="Zeitslot" ToRole="Filiale" />
+    <NavigationProperty Name="HatBuchungen" Relationship="RestaurantModel.BuchungsZeit" FromRole="Zeitslot" ToRole="Buchung" />
+  </EntityType>
+  <EntityType Name="Gericht">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="EnthaltenIn" Relationship="RestaurantModel.EnthaeltGericht" FromRole="Gericht" ToRole="Buchung" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Beschreibung" Type="String" Nullable="false" />
+    <Property Name="Preis" Type="Double" Nullable="false" />
+  </EntityType>
+  <Association Name="GebuchtUm">
+    <End Type="RestaurantModel.Filiale" Role="Filiale" Multiplicity="1" />
+    <End Type="RestaurantModel.Zeitslot" Role="Zeitslot" Multiplicity="*" />
+  </Association>
+  <Association Name="BuchungsZeit">
+    <End Type="RestaurantModel.Zeitslot" Role="Zeitslot" Multiplicity="1" />
+    <End Type="RestaurantModel.Buchung" Role="Buchung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zeitslot">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buchung">
+        <PropertyRef Name="ZeitslotId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EnthaeltGericht">
+    <End Type="RestaurantModel.Buchung" Role="Buchung" Multiplicity="*" />
+    <End Type="RestaurantModel.Gericht" Role="Gericht" Multiplicity="*" />
+  </Association>
+  <Association Name="GebuchtVon">
+    <End Type="RestaurantModel.Buchung" Role="Buchung" Multiplicity="*" />
+    <End Type="RestaurantModel.Kunde" Role="Kunde" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Kunde">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buchung">
+        <PropertyRef Name="KundeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.String;
 
-namespace RestaurantLib
+namespace RestaurantLibDB
 {
-    public class Gericht
+    public partial class Gericht
     {
         //private attributes
         private string _beschreibung;

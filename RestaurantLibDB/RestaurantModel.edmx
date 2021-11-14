@@ -75,6 +75,9 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Beschreibung" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Preis" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="EnthaeltGericht">
     <Key>
@@ -220,6 +223,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="EnthaltenIn" Relationship="RestaurantModel.EnthaeltGericht" FromRole="Gericht" ToRole="Buchung" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Beschreibung" Type="String" Nullable="false" />
+          <Property Name="Preis" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="GebuchtUm">
           <End Type="RestaurantModel.Filiale" Role="Filiale" Multiplicity="1" />
@@ -303,6 +309,9 @@
       <EntityTypeMapping TypeName="IsTypeOf(RestaurantModel.Gericht)">
         <MappingFragment StoreEntitySet="Gerichte">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Beschreibung" ColumnName="Beschreibung" />
+          <ScalarProperty Name="Preis" ColumnName="Preis" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
