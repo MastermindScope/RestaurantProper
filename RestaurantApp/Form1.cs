@@ -20,6 +20,7 @@ namespace RestaurantApp
         }
         DataStore Data = new DataStore();
         DemoData Dummy = new DemoData();
+        RestaurantModelContainer DB = new RestaurantModelContainer();
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,18 +42,41 @@ namespace RestaurantApp
         {
             Data = new DataStore();
             Dummy = new DemoData();
+            
+            foreach(var g in Dummy.Gerichte)
+            {
+                DB.Gerichte.Add(g);
+            }
+            DB.SaveChanges();
+            foreach(var k in Dummy.Kunden)
+            {
+                DB.Kunden.Add(k);
+            }
+            foreach (var f in Dummy.Filialen)
+            {
+                DB.Filialen.Add(f);
+            }
+
+            foreach(var b in Dummy.Buchungen)
+            {
+                DB.Bestellungen.Add(b);
+            }
+            DB.SaveChanges();
         }
 
         private void InitButton_Click(object sender, EventArgs e)
         {
-            foreach(var k in Dummy.Kunden)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(k.Vorname);
-                sb.Append(" ");
-                sb.Append(k.Name);
-                Console.WriteLine(sb.ToString());
-            }
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

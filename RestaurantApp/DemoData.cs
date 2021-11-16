@@ -52,21 +52,9 @@ namespace RestaurantApp
         public static DateTime nachmittagStart = new DateTime(2021, 12, 13, 16, 00, 00);
         public static DateTime nachmittagEnde = new DateTime(2021, 12, 13, 16, 15, 00);
 
-        public static Zeitslot vormittagNbg = new ZeitslotBuilder()
-            .setStart(vormittagStart)
-            .setEnde(vormittagEnde)
-            .setEssensplatz(nuernberg)
-            .build();
-
-        public static Zeitslot nachmittagKA = new ZeitslotBuilder()
-            .setStart(nachmittagStart)
-            .setEnde(nachmittagEnde)
-            .setEssensplatz(karlsruhe)
-            .build();
-
         public static Buchung petersBuchung = new BuchungBuilder()
             .setBuchungsNummer("ABC123")
-            .setEssensZeit(vormittagNbg)
+            .setEssenszeit(vormittagStart)
             .setPersonen(1)
             .addGericht(pommesKlein)
             .gebuchtVon(peter)
@@ -77,14 +65,6 @@ namespace RestaurantApp
             petersBuchung.EnthaeltGerichte.Add(pommesGross);
         }
 
-        public IEnumerable<Zeitslot> Zeitslots
-        {
-            get
-            {
-                yield return nachmittagKA;
-                yield return vormittagNbg;
-            }
-        }
 
         public IEnumerable<Buchung> Buchungen
         {

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/16/2021 16:32:04
+-- Date Created: 11/16/2021 17:26:39
 -- Generated from EDMX file: C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\RestaurantModel.edmx
 -- --------------------------------------------------
 
@@ -25,6 +25,9 @@ IF OBJECT_ID(N'[dbo].[FK_EnthaeltGericht_Gericht]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_GebuchtVon]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Bestellungen] DROP CONSTRAINT [FK_GebuchtVon];
+GO
+IF OBJECT_ID(N'[dbo].[FK_FilialeBuchung]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Bestellungen] DROP CONSTRAINT [FK_FilialeBuchung];
 GO
 
 -- --------------------------------------------------
@@ -74,7 +77,6 @@ CREATE TABLE [dbo].[Bestellungen] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Buchungsnummmer] nvarchar(max)  NOT NULL,
     [Personen] int  NOT NULL,
-    [ZeitslotId] int  NOT NULL,
     [KundeId] int  NOT NULL,
     [Essenszeit] datetime  NOT NULL,
     [FilialeId] int  NOT NULL

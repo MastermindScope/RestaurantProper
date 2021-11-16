@@ -16,3 +16,5 @@ C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\R
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\RestaurantLibDB.dll.config
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\EntityFramework.xml
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.KundenForm.resources
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantApp\obj\Debug\RestaurantApp.GerichtForm.resources

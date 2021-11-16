@@ -12,8 +12,7 @@ namespace RestaurantLibDB.Extension
         private string Name;
         private string Ort;
         private string Beschreibung;
-        private List<Zeitslot> Zeitslots = new List<Zeitslot>();
-
+        private List<Buchung> HatBuchungen = new List<Buchung>();
 
         public FilialeBuilder setName(string name)
         {
@@ -42,7 +41,6 @@ namespace RestaurantLibDB.Extension
         public Filiale build()
         {
             Filiale val = new Filiale(Name, Ort, Beschreibung);
-            Zeitslots.ForEach(zs => val.Zeitslots.Add(zs));
             return val;
         }
 

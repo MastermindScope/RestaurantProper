@@ -17,7 +17,7 @@ namespace RestaurantLibDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Filiale()
         {
-            this.Zeitslots = new HashSet<Zeitslot>();
+            this.HatBuchung = new HashSet<Buchung>();
         }
     
         public int Id { get; set; }
@@ -26,6 +26,6 @@ namespace RestaurantLibDB
         public string Ort { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zeitslot> Zeitslots { get; set; }
+        public virtual ICollection<Buchung> HatBuchung { get; set; }
     }
 }

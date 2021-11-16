@@ -25,15 +25,7 @@ namespace RestaurantLibDB
         //private methods
 
         //public methods
-        /*public void AddTimes(Zeitslot time)
-        {
-            Zeitslots.Add(time);
-        }*/
 
-        public IEnumerable<Zeitslot> GetZeitslots()
-        {
-            return Zeitslots;
-        }
 
     }
 }

@@ -23,12 +23,13 @@ namespace RestaurantLibDB
         public int Id { get; set; }
         public string Buchungsnummmer { get; set; }
         public int Personen { get; set; }
-        public int ZeitslotId { get; set; }
         public int KundeId { get; set; }
+        public System.DateTime Essenszeit { get; set; }
+        public int FilialeId { get; set; }
     
-        public virtual Zeitslot Um { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gericht> EnthaeltGerichte { get; set; }
         public virtual Kunde GebuchtVon { get; set; }
+        public virtual Filiale InFiliale { get; set; }
     }
 }

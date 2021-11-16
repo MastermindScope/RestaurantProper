@@ -10,10 +10,10 @@ namespace RestaurantLibDB.Extension
     public class BuchungBuilder
     {
         private string Buchungsnummer;
-        private Zeitslot Essenszeit;
         private List<Gericht> EnthaeltGerichte = new List<Gericht>();
         private Kunde GebuchtVon;
         private int Personen;
+        private DateTime Essenszeit;
 
 
         public BuchungBuilder setBuchungsNummer(string buchungsNummer)
@@ -22,14 +22,6 @@ namespace RestaurantLibDB.Extension
             {
                 throw new Exception("Do enter a valid alpha-numeric booking number please!");
             } else { Buchungsnummer = buchungsNummer;  return this; }
-        }
-
-        public BuchungBuilder setEssensZeit(Zeitslot essenszeit)
-        {
-            if(essenszeit == null)
-            {
-                throw new Exception("Enter a valid date.");
-            } else { Essenszeit = essenszeit;  return this; }
         }
 
         public BuchungBuilder gebuchtVon(Kunde buchender)
@@ -56,10 +48,18 @@ namespace RestaurantLibDB.Extension
             } else { EnthaeltGerichte.Add(happahappa); return this; }
         }
 
+        public BuchungBuilder setEssenszeit(DateTime essenszeit)
+        {
+            if(essenszeit == null)
+            {
+                throw new Exception("Essenszeit null!");
+            } else { Essenszeit = essenszeit; return this; }
+        }
+
 
         public Buchung build()
         {
-            Buchung val = new Buchung(Essenszeit, GebuchtVon, Buchungsnummer, Personen);
+            Buchung val = new Buchung(GebuchtVon, Buchungsnummer, Personen, Essenszeit);
             EnthaeltGerichte.ForEach(ger => val.AddGericht(ger));
             return val;
         }

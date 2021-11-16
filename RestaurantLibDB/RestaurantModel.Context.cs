@@ -28,7 +28,6 @@ namespace RestaurantLibDB
         public virtual DbSet<Filiale> Filialen { get; set; }
         public virtual DbSet<Kunde> Kunden { get; set; }
         public virtual DbSet<Buchung> Bestellungen { get; set; }
-        public virtual DbSet<Zeitslot> Zeitslots { get; set; }
         public virtual DbSet<Gericht> Gerichte { get; set; }
     }
 }

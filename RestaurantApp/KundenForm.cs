@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RestaurantLibDB;
 
 namespace RestaurantApp
 {
@@ -16,5 +17,26 @@ namespace RestaurantApp
         {
             InitializeComponent();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        /*
+public static Kunde createKunde(DataStore data, string caption)
+{
+
+
+}*/
     }
 }

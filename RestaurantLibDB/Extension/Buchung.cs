@@ -16,14 +16,14 @@ namespace RestaurantLibDB
 
 
         //constructor
-        public Buchung(Zeitslot essenszeit, Kunde hungriger, string buchungsnummer, int personen)
+        public Buchung(Kunde hungriger, string buchungsnummer, int personen, DateTime essenszeit)
         {
-            Um = essenszeit;
-            essenszeit.AddBuchungen(this); //add this buchung to the list of Buchungen in the timeslot
             GebuchtVon = hungriger;
             hungriger.AddBuchung(this); //add this buchung to the list of Buchungen for the customer
             Buchungsnummmer = buchungsnummer;
             Personen = personen;
+            Essenszeit = essenszeit;
+
         }
 
         //private methods

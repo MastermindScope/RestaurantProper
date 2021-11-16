@@ -63,9 +63,6 @@
     <Compile Include="Extension\Gericht.cs" />
     <Compile Include="Extension\GerichtBuilder.cs" />
     <Compile Include="Extension\Kunde.cs" />
-    <Compile Include="Extension\RestaurantModelContainer.cs" />
-    <Compile Include="Extension\Zeitslot.cs" />
-    <Compile Include="Extension\ZeitslotBuilder.cs" />
     <Compile Include="Filiale.cs">
       <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
@@ -91,9 +88,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RestaurantModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Zeitslot.cs">
-      <DependentUpon>RestaurantModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -4,17 +4,8 @@
     <EntitySet Name="Filialen" EntityType="RestaurantModel.Store.Filialen" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Kunden" EntityType="RestaurantModel.Store.Kunden" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Bestellungen" EntityType="RestaurantModel.Store.Bestellungen" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Zeitslots" EntityType="RestaurantModel.Store.Zeitslots" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Gerichte" EntityType="RestaurantModel.Store.Gerichte" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="EnthaeltGericht" EntityType="RestaurantModel.Store.EnthaeltGericht" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="GebuchtUm" Association="RestaurantModel.Store.GebuchtUm">
-      <End Role="Filiale" EntitySet="Filialen" />
-      <End Role="Zeitslot" EntitySet="Zeitslots" />
-    </AssociationSet>
-    <AssociationSet Name="BuchungsZeit" Association="RestaurantModel.Store.BuchungsZeit">
-      <End Role="Zeitslot" EntitySet="Zeitslots" />
-      <End Role="Buchung" EntitySet="Bestellungen" />
-    </AssociationSet>
     <AssociationSet Name="FK_EnthaeltGericht_Buchung" Association="RestaurantModel.Store.FK_EnthaeltGericht_Buchung">
       <End Role="Buchung" EntitySet="Bestellungen" />
       <End Role="EnthaeltGericht" EntitySet="EnthaeltGericht" />
@@ -26,6 +17,10 @@
     <AssociationSet Name="GebuchtVon" Association="RestaurantModel.Store.GebuchtVon">
       <End Role="Buchung" EntitySet="Bestellungen" />
       <End Role="Kunde" EntitySet="Kunden" />
+    </AssociationSet>
+    <AssociationSet Name="FilialeBuchung" Association="RestaurantModel.Store.FilialeBuchung">
+      <End Role="Filiale" EntitySet="Filialen" />
+      <End Role="Buchung" EntitySet="Bestellungen" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Filialen">
@@ -52,18 +47,10 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Buchungsnummmer" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Personen" Type="smallint" Nullable="false" />
-    <Property Name="ZeitslotId" Type="int" Nullable="false" />
+    <Property Name="Personen" Type="int" Nullable="false" />
     <Property Name="KundeId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Zeitslots">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Start" Type="datetime" Nullable="false" />
-    <Property Name="Ende" Type="datetime" Nullable="false" />
-    <Property Name="Filiale_Id" Type="int" Nullable="false" />
+    <Property Name="Essenszeit" Type="datetime" Nullable="false" />
+    <Property Name="FilialeId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Gerichte">
     <Key>
@@ -82,30 +69,6 @@
     <Property Name="EnthaltenIn_Id" Type="int" Nullable="false" />
     <Property Name="EnthaeltGerichte_Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="GebuchtUm">
-    <End Role="Filiale" Type="RestaurantModel.Store.Filialen" Multiplicity="1" />
-    <End Role="Zeitslot" Type="RestaurantModel.Store.Zeitslots" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Filiale">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Zeitslot">
-        <PropertyRef Name="Filiale_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="BuchungsZeit">
-    <End Role="Zeitslot" Type="RestaurantModel.Store.Zeitslots" Multiplicity="1" />
-    <End Role="Buchung" Type="RestaurantModel.Store.Bestellungen" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Zeitslot">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Buchung">
-        <PropertyRef Name="ZeitslotId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="GebuchtVon">
     <End Role="Buchung" Type="RestaurantModel.Store.Bestellungen" Multiplicity="*" />
     <End Role="Kunde" Type="RestaurantModel.Store.Kunden" Multiplicity="1" />
@@ -115,6 +78,18 @@
       </Principal>
       <Dependent Role="Buchung">
         <PropertyRef Name="KundeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FilialeBuchung">
+    <End Role="Filiale" Type="RestaurantModel.Store.Filialen" Multiplicity="1" />
+    <End Role="Buchung" Type="RestaurantModel.Store.Bestellungen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filiale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Buchung">
+        <PropertyRef Name="FilialeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
