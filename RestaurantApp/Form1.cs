@@ -40,11 +40,19 @@ namespace RestaurantApp
         private void Form1_Load(object sender, EventArgs e)
         {
             Data = new DataStore();
+            Dummy = new DemoData();
         }
 
         private void InitButton_Click(object sender, EventArgs e)
         {
-
+            foreach(var k in Dummy.Kunden)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(k.Vorname);
+                sb.Append(" ");
+                sb.Append(k.Name);
+                Console.WriteLine(sb.ToString());
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/14/2021 10:05:52
+-- Date Created: 11/16/2021 16:32:04
 -- Generated from EDMX file: C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantLibDB\RestaurantModel.edmx
 -- --------------------------------------------------
 
@@ -17,12 +17,6 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_GebuchtUm]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Zeitslots] DROP CONSTRAINT [FK_GebuchtUm];
-GO
-IF OBJECT_ID(N'[dbo].[FK_BuchungsZeit]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Bestellungen] DROP CONSTRAINT [FK_BuchungsZeit];
-GO
 IF OBJECT_ID(N'[dbo].[FK_EnthaeltGericht_Buchung]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[EnthaeltGericht] DROP CONSTRAINT [FK_EnthaeltGericht_Buchung];
 GO
@@ -45,9 +39,6 @@ IF OBJECT_ID(N'[dbo].[Kunden]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Bestellungen]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Bestellungen];
-GO
-IF OBJECT_ID(N'[dbo].[Zeitslots]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Zeitslots];
 GO
 IF OBJECT_ID(N'[dbo].[Gerichte]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Gerichte];
@@ -82,18 +73,11 @@ GO
 CREATE TABLE [dbo].[Bestellungen] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Buchungsnummmer] nvarchar(max)  NOT NULL,
-    [Personen] smallint  NOT NULL,
+    [Personen] int  NOT NULL,
     [ZeitslotId] int  NOT NULL,
-    [KundeId] int  NOT NULL
-);
-GO
-
--- Creating table 'Zeitslots'
-CREATE TABLE [dbo].[Zeitslots] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Start] datetime  NOT NULL,
-    [Ende] datetime  NOT NULL,
-    [Filiale_Id] int  NOT NULL
+    [KundeId] int  NOT NULL,
+    [Essenszeit] datetime  NOT NULL,
+    [FilialeId] int  NOT NULL
 );
 GO
 
@@ -135,12 +119,6 @@ ADD CONSTRAINT [PK_Bestellungen]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Zeitslots'
-ALTER TABLE [dbo].[Zeitslots]
-ADD CONSTRAINT [PK_Zeitslots]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'Gerichte'
 ALTER TABLE [dbo].[Gerichte]
 ADD CONSTRAINT [PK_Gerichte]
@@ -156,36 +134,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [Filiale_Id] in table 'Zeitslots'
-ALTER TABLE [dbo].[Zeitslots]
-ADD CONSTRAINT [FK_GebuchtUm]
-    FOREIGN KEY ([Filiale_Id])
-    REFERENCES [dbo].[Filialen]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_GebuchtUm'
-CREATE INDEX [IX_FK_GebuchtUm]
-ON [dbo].[Zeitslots]
-    ([Filiale_Id]);
-GO
-
--- Creating foreign key on [ZeitslotId] in table 'Bestellungen'
-ALTER TABLE [dbo].[Bestellungen]
-ADD CONSTRAINT [FK_BuchungsZeit]
-    FOREIGN KEY ([ZeitslotId])
-    REFERENCES [dbo].[Zeitslots]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_BuchungsZeit'
-CREATE INDEX [IX_FK_BuchungsZeit]
-ON [dbo].[Bestellungen]
-    ([ZeitslotId]);
-GO
 
 -- Creating foreign key on [EnthaltenIn_Id] in table 'EnthaeltGericht'
 ALTER TABLE [dbo].[EnthaeltGericht]
@@ -224,6 +172,21 @@ GO
 CREATE INDEX [IX_FK_GebuchtVon]
 ON [dbo].[Bestellungen]
     ([KundeId]);
+GO
+
+-- Creating foreign key on [FilialeId] in table 'Bestellungen'
+ALTER TABLE [dbo].[Bestellungen]
+ADD CONSTRAINT [FK_FilialeBuchung]
+    FOREIGN KEY ([FilialeId])
+    REFERENCES [dbo].[Filialen]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_FilialeBuchung'
+CREATE INDEX [IX_FK_FilialeBuchung]
+ON [dbo].[Bestellungen]
+    ([FilialeId]);
 GO
 
 -- --------------------------------------------------

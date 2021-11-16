@@ -8,12 +8,10 @@
         <EntityTypeShape EntityType="RestaurantModel.Filiale" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="RestaurantModel.Kunde" Width="1.5" PointX="7.375" PointY="0.5" />
         <EntityTypeShape EntityType="RestaurantModel.Buchung" Width="1.5" PointX="5.125" PointY="0.5" />
-        <EntityTypeShape EntityType="RestaurantModel.Zeitslot" Width="1.5" PointX="3.125" PointY="0.5" />
         <EntityTypeShape EntityType="RestaurantModel.Gericht" Width="1.5" PointX="5.125" PointY="3.75" />
-        <AssociationConnector Association="RestaurantModel.GebuchtUm" />
-        <AssociationConnector Association="RestaurantModel.BuchungsZeit" />
         <AssociationConnector Association="RestaurantModel.EnthaeltGericht" />
         <AssociationConnector Association="RestaurantModel.GebuchtVon" />
+        <AssociationConnector Association="RestaurantModel.FilialeBuchung" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

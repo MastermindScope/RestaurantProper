@@ -29,6 +29,10 @@ namespace RestaurantLibDB
         //public methods
         public void AddBuchung(Buchung buchungToAdd)
         {
+            if(HatGebucht == null)
+            {
+                HatGebucht = new List<Buchung>();
+            }
             HatGebucht.Add(buchungToAdd);
         }
 

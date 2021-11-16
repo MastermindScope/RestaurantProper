@@ -31,6 +31,10 @@ namespace RestaurantLibDB
         //public methods
         public void AddGericht(Gericht gerichtToAdd)    //if a gericht is added, the gericht automatically get an entry in the list on which Buchungen it exists
         {
+            if(EnthaeltGerichte == null)
+            {
+                EnthaeltGerichte = new List<Gericht>();
+            }
             EnthaeltGerichte.Add(gerichtToAdd);
             gerichtToAdd.AddBuchungen(this);
         }

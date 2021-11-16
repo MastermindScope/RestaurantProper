@@ -72,8 +72,53 @@ namespace RestaurantApp
             .gebuchtVon(peter)
             .build();
 
+        public DemoData()
+        {
+            petersBuchung.EnthaeltGerichte.Add(pommesGross);
+        }
 
+        public IEnumerable<Zeitslot> Zeitslots
+        {
+            get
+            {
+                yield return nachmittagKA;
+                yield return vormittagNbg;
+            }
+        }
 
+        public IEnumerable<Buchung> Buchungen
+        {
+            get
+            {
+                yield return petersBuchung;
+            }
+        }
 
+        public IEnumerable<Kunde> Kunden
+        {
+            get
+            {
+                yield return peter;
+                yield return hermann;
+            }
+        }
+
+        public IEnumerable<Filiale> Filialen
+        {
+            get
+            {
+                yield return nuernberg;
+                yield return karlsruhe;
+            }
+        }
+
+        public IEnumerable<Gericht> Gerichte
+        {
+            get
+            {
+                yield return pommesKlein;
+                yield return pommesGross;
+            }
+        }
     }
 }
