@@ -20,12 +20,12 @@ namespace RestaurantWeb.Controllers
             {
                 if (LoggedInUser.RoleUser == true)
                 {
-                    var bestellungen = db.Bestellungen.Where(b => b.GebuchtVon.Id == LoggedInUser.Id).Include(b => b.GebuchtVon).Include(b => b.InFiliale).Include(b => b.Essenszeit);
+                    var bestellungen = db.Bestellungen.Where(b => b.GebuchtVon.Id == LoggedInUser.Id).Include(b => b.GebuchtVon).Include(b => b.InFiliale);
                     return View(bestellungen.ToList());
                 }
                 else if (LoggedInUser.RoleKoch == true)
                 {
-                    var bestellungen = db.Bestellungen.Include(b => b.GebuchtVon).Include(b => b.InFiliale).Include(b => b.Essenszeit);
+                    var bestellungen = db.Bestellungen.Include(b => b.GebuchtVon).Include(b => b.InFiliale);
                     return View(bestellungen.ToList());
                 }
             }
