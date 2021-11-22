@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RestaurantLibDB;
 
-namespace RestaurantApp
+namespace RestaurantWeb
 {
     public partial class KundenForm : Form
     {

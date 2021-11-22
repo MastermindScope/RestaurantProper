@@ -1,5 +1,5 @@
 ﻿
-namespace RestaurantApp
+namespace RestaurantWeb
 {
     partial class Form1
     {

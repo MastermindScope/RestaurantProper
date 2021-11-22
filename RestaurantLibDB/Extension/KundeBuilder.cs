@@ -13,6 +13,8 @@ namespace RestaurantLibDB.Extension
         private string Vorname;
         private string Kundennummer;
         private List<Buchung> HatGebucht = new List<Buchung>();
+        private bool RoleKunde = false;
+        private bool RoleKoch = false;
 
         public KundeBuilder setName(string name)
         {
@@ -46,9 +48,21 @@ namespace RestaurantLibDB.Extension
             } else { HatGebucht.Add(buchung); return this; }
         }
 
+        public KundeBuilder isKunde(bool val)
+        {
+            RoleKunde = val;
+            return this;
+        }
+
+        public KundeBuilder isKoch(bool val)
+        {
+            RoleKoch = val;
+            return this;
+        }
+
         public Kunde build()
         {
-            Kunde val = new Kunde(Name, Vorname, Kundennummer);
+            Kunde val = new Kunde(Name, Vorname, Kundennummer, RoleKunde, RoleKoch);
             HatGebucht.ForEach(buch => val.AddBuchung(buch));
             return val;
         }

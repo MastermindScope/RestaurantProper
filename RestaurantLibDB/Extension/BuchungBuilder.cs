@@ -14,6 +14,7 @@ namespace RestaurantLibDB.Extension
         private Kunde GebuchtVon;
         private int Personen;
         private DateTime Essenszeit;
+        private Filiale Essensplatz;
 
 
         public BuchungBuilder setBuchungsNummer(string buchungsNummer)
@@ -56,10 +57,18 @@ namespace RestaurantLibDB.Extension
             } else { Essenszeit = essenszeit; return this; }
         }
 
+        public BuchungBuilder setFiliale(Filiale filiale)
+        {
+            if (filiale == null)
+            {
+                throw new Exception("How dare you give null inputs?");
+            } else { Essensplatz = filiale; return this; }
+        }
+
 
         public Buchung build()
         {
-            Buchung val = new Buchung(GebuchtVon, Buchungsnummer, Personen, Essenszeit);
+            Buchung val = new Buchung(GebuchtVon, Buchungsnummer, Personen, Essenszeit, Essensplatz);
             EnthaeltGerichte.ForEach(ger => val.AddGericht(ger));
             return val;
         }

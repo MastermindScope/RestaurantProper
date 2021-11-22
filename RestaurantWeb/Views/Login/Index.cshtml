@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RestaurantLibDB.Kunde>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kundennummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleKoch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleUser)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vorname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kundennummer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleKoch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleUser)
+        </td>
+        <td>
+            @Html.ActionLink("Select", "Select", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

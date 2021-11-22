@@ -18,6 +18,8 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Vorname" ColumnName="Vorname" />
           <ScalarProperty Name="Kundennummer" ColumnName="Kundennummer" />
+          <ScalarProperty Name="RoleKoch" ColumnName="RoleKoch" />
+          <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

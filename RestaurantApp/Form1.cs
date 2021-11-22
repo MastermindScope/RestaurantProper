@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using RestaurantLibDB;
 
-namespace RestaurantApp
+namespace RestaurantWeb
 {
     public partial class Form1 : Form
     {
@@ -42,26 +42,30 @@ namespace RestaurantApp
         {
             Data = new DataStore();
             Dummy = new DemoData();
-            
-            foreach(var g in Dummy.Gerichte)
-            {
-                DB.Gerichte.Add(g);
-            }
-            DB.SaveChanges();
-            foreach(var k in Dummy.Kunden)
+
+
+            foreach (var k in Dummy.Kunden)
             {
                 DB.Kunden.Add(k);
+            }
+            DB.SaveChanges();
+            foreach (var g in Dummy.Gerichte)
+            {
+                DB.Gerichte.Add(g);
             }
             foreach (var f in Dummy.Filialen)
             {
                 DB.Filialen.Add(f);
             }
-
-            foreach(var b in Dummy.Buchungen)
+            foreach (var b in Dummy.Buchungen)
             {
                 DB.Bestellungen.Add(b);
             }
             DB.SaveChanges();
+            
+            
+
+            
         }
 
         private void InitButton_Click(object sender, EventArgs e)

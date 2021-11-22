@@ -37,6 +37,8 @@
     <Property Name="Vorname" Type="String" Nullable="false" />
     <Property Name="Kundennummer" Type="String" Nullable="false" />
     <NavigationProperty Name="HatGebucht" Relationship="RestaurantModel.GebuchtVon" FromRole="Kunde" ToRole="Buchung" />
+    <Property Name="RoleKoch" Type="Boolean" Nullable="false" />
+    <Property Name="RoleUser" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Buchung">
     <Key>

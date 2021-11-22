@@ -45,6 +45,8 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Vorname" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Kundennummer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoleKoch" Type="bit" Nullable="false" />
+    <Property Name="RoleUser" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Bestellungen">
     <Key>
@@ -163,6 +165,8 @@
           <Property Name="Vorname" Type="String" Nullable="false" />
           <Property Name="Kundennummer" Type="String" Nullable="false" />
           <NavigationProperty Name="HatGebucht" Relationship="RestaurantModel.GebuchtVon" FromRole="Kunde" ToRole="Buchung" />
+          <Property Name="RoleKoch" Type="Boolean" Nullable="false" />
+          <Property Name="RoleUser" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Buchung">
           <Key>
@@ -239,6 +243,8 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Vorname" ColumnName="Vorname" />
           <ScalarProperty Name="Kundennummer" ColumnName="Kundennummer" />
+          <ScalarProperty Name="RoleKoch" ColumnName="RoleKoch" />
+          <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

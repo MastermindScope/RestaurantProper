@@ -1,5 +1,5 @@
 ﻿
-namespace RestaurantApp
+namespace RestaurantWeb
 {
     public class DataStore : RestaurantLibDB.RestaurantModelContainer
     {

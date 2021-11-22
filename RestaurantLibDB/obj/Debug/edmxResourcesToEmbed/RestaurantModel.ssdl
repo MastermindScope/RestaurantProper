@@ -40,6 +40,8 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Vorname" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Kundennummer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RoleKoch" Type="bit" Nullable="false" />
+    <Property Name="RoleUser" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Bestellungen">
     <Key>

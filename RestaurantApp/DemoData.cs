@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RestaurantLibDB;
 using RestaurantLibDB.Extension;
 
-namespace RestaurantApp
+namespace RestaurantWeb
 {
     class DemoData
     {
@@ -14,12 +14,21 @@ namespace RestaurantApp
             .setName("Lustig")
             .setVorname("Peter")
             .setKundennummer("XXXX1234")
+            .isKunde(true)
             .build();
 
         public static Kunde hermann = new KundeBuilder()
             .setVorname("Hermann")
             .setName("Paschulke")
             .setKundennummer("XXXX4321")
+            .isKunde(true)
+            .build();
+
+        public static Kunde paul = new KundeBuilder()
+            .setVorname("Paul")
+            .setName("Gusto")
+            .setKundennummer("Remis123")
+            .isKoch(true)
             .build();
 
         public static Filiale nuernberg = new FilialeBuilder()
@@ -58,6 +67,7 @@ namespace RestaurantApp
             .setPersonen(1)
             .addGericht(pommesKlein)
             .gebuchtVon(peter)
+            .setFiliale(nuernberg)
             .build();
 
         public DemoData()
@@ -80,6 +90,7 @@ namespace RestaurantApp
             {
                 yield return peter;
                 yield return hermann;
+                yield return paul;
             }
         }
 
