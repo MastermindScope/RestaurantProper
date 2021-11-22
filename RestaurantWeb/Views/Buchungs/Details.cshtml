@@ -51,10 +51,22 @@
         </dd>
 
 
+        @foreach (var gericht in Model.GetGerichte())
+        {
+            <dt>
+                @gericht.Name | @gericht.Preis €
+            </dt>
+        }
+
+        <dt>Gesamtpreis: @Model.EnthaeltGerichte.Select(i => i.Preis).Sum() €</dt>
+
+
 
     </dl>
 </div>
 <p>
+    
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
+    
 </p>

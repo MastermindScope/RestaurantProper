@@ -8,11 +8,10 @@ using System.Web;
 using System.Web.Mvc;
 using RestaurantLibDB;
 
-namespace RestaurantWeb
+namespace RestaurantWeb.Controllers
 {
-    public class GerichtsController : Controller
+    public class GerichtsController : BaseController
     {
-        private RestaurantModelContainer db = new RestaurantModelContainer();
 
         // GET: Gerichts
         public ActionResult Index()

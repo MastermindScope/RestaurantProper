@@ -45,13 +45,28 @@ namespace RestaurantWeb.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EnthalteneGerichte = new SelectList(buchung.GetGerichte(), "Name", "GerichteName");
             return View(buchung);
         }
 
         // GET: Buchungs/Create
         public ActionResult Create()
         {
-            ViewBag.KundeId = new SelectList(db.Kunden, "Id", "Name");
+            if (hasUser())
+            {
+                if (LoggedInUser.RoleUser)
+                {
+                    ViewBag.KundeId = new SelectList(db.Kunden.Where(k => k.Id == LoggedInUser.Id), "Id", "Name");
+                } else if (LoggedInUser.RoleKoch)
+                {
+                    ViewBag.KundeId = new SelectList(db.Kunden, "Id", "Name");
+                }
+            }
+            
+            if (!hasUser())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             ViewBag.FilialeId = new SelectList(db.Filialen, "Id", "Name");
             ViewBag.GerichteId = new SelectList(db.Gerichte, "Id", "Name");
 
@@ -73,7 +88,17 @@ namespace RestaurantWeb.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.KundeId = new SelectList(db.Kunden, "Id", "Name", buchung.KundeId);
+            if (hasUser())
+            {
+                if (LoggedInUser.RoleUser)
+                {
+                    ViewBag.KundeId = new SelectList(db.Kunden.Where(k => k.Id == LoggedInUser.Id), "Id", "Name");
+                }
+                else if (LoggedInUser.RoleKoch)
+                {
+                    ViewBag.KundeId = new SelectList(db.Kunden, "Id", "Name");
+                }
+            }
             ViewBag.FilialeId = new SelectList(db.Filialen, "Id", "Name", buchung.FilialeId);
             ViewBag.GerichteId = new SelectList(db.Gerichte, "Id", "Name");
             return View(buchung);
@@ -140,6 +165,21 @@ namespace RestaurantWeb.Controllers
             db.Bestellungen.Remove(buchung);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult AddGericht(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Buchung buchung = db.Bestellungen.Find(id);
+            idStorage = (int)id;
+            if (buchung == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("Index", "AddToBuchung", new { id = idStorage });
         }
 
 

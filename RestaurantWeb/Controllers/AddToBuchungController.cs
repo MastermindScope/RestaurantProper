@@ -10,30 +10,18 @@ using RestaurantLibDB;
 
 namespace RestaurantWeb.Controllers
 {
-    public class AddToBuchungController : Controller
+    public class AddToBuchungController : BaseController
     {
-        private RestaurantModelContainer db = new RestaurantModelContainer();
-
+        private Buchung buchung;
         // GET: AddToBuchung
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
+            ViewBag.BuchungsId = id;
+            buchung = db.Bestellungen.Find(id);
+            if (buchung == null) { return HttpNotFound("could not find buchung with that id " + id); }
             return View(db.Gerichte.ToList());
         }
 
-        // GET: AddToBuchung/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gericht gericht = db.Gerichte.Find(id);
-            if (gericht == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gericht);
-        }
 
         public ActionResult AddToBuchung(int? id)
         {
@@ -49,14 +37,23 @@ namespace RestaurantWeb.Controllers
             return View(gericht);
         }
 
-
-        protected override void Dispose(bool disposing)
+        public ActionResult Add(int id, int buchungsId)
         {
-            if (disposing)
+            if (id == null)
             {
-                db.Dispose();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            base.Dispose(disposing);
+            Gericht gericht = db.Gerichte.Find(id);
+            if (gericht == null)
+            {
+                return HttpNotFound();
+            }
+
+            Buchung buchung = db.Bestellungen.Find(buchungsId);
+            
+
+            buchung.AddGericht(gericht);
+            return RedirectToAction("Index", "Buchungs");
         }
     }
 }

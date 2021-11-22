@@ -15,6 +15,8 @@ namespace RestaurantWeb.Controllers
         protected RestaurantModelContainer db = new RestaurantModelContainer();
 
         private static String UserIdKey = "UserId";
+
+        protected int idStorage;
         public Kunde setUser()
         {
             int? userId = Session[UserIdKey] as int?;

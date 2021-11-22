@@ -35,7 +35,7 @@
             @Html.DisplayFor(modelItem => item.Preis)
         </td>
         <td>
-            @Html.ActionLink("Zu Buchung hinzufügen", "AddToBuchung", new { id=item.Id })
+            @Html.ActionLink("Zu Buchung hinzufügen", "Add", new { id=item.Id, buchungsId=ViewBag.BuchungsId })
         </td>
     </tr>
 }
