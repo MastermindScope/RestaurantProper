@@ -18,15 +18,20 @@ namespace RestaurantWeb.Controllers
         {
             DateTime now = DateTime.Now;
 
-            TimeSpan viertelStunde = new TimeSpan(18000);//ticks in 15 minutes = 18000
+
+            var liste = db.Bestellungen
+                        .Where(b => b.Essenszeit.Year == now.Year &&
+                        b.Essenszeit.Month == now.Month &&
+                        b.Essenszeit.Day == now.Day &&
+                        -b.Essenszeit.Hour * 60 - b.Essenszeit.Minute + now.Hour * 60 + now.Minute + 33 >= 0)
+                        .SelectMany(b => b.EnthaeltGerichte).ToList();
 
             
-            return View(db.Gerichte.Select(g => g.EnthaltenIn
-                .Where(b => b.Essenszeit.Year == now.Year)
-                .Where(b => b.Essenszeit.Day == now.Day)
-                .Where(b => b.Essenszeit.Month == now.Month)
-                .Where(b => (b.Essenszeit.Hour + b.Essenszeit.Minute / 60 - now.Hour - now.Minute / 60 - 0.25) < 0))
-                .ToList()); //this had to be done this scuffed because linq does not want to process comparisons between datetimes
+            
+
+
+            return View(liste);
+
         }
 
         // GET: PrepareFood/Details/5

@@ -52,7 +52,11 @@ namespace RestaurantWeb.Controllers
             Buchung buchung = db.Bestellungen.Find(buchungsId);
             
 
-            buchung.AddGericht(gericht);
+            //buchung.AddGericht(gericht);
+            db.Bestellungen.Find(buchung.Id).AddGericht(gericht);
+            db.Bestellungen.Find(buchung.Id).EnthaeltGerichte.Add(gericht);
+            db.SaveChanges();
+
             return RedirectToAction("Index", "Buchungs");
         }
     }

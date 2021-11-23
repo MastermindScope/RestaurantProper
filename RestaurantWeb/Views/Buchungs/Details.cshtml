@@ -54,11 +54,15 @@
         @foreach (var gericht in Model.GetGerichte())
         {
             <dt>
-                @gericht.Name | @gericht.Preis €
+                @gericht.Name:
             </dt>
+
+            <dd>@gericht.Preis €</dd>
         }
 
-        <dt>Gesamtpreis: @Model.EnthaeltGerichte.Select(i => i.Preis).Sum() €</dt>
+        <dt>Gesamtpreis:</dt>
+        <dd>@Model.EnthaeltGerichte.Select(i => i.Preis).Sum() €</dd>
+
 
 
 
