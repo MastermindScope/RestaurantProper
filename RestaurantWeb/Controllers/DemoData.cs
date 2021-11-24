@@ -10,6 +10,18 @@ namespace RestaurantWeb
 {
     public class DemoData
     {
+        public static Filiale nuernberg = new FilialeBuilder()
+            .setName("Filiale Nürnberg-HBF")
+            .setBeschreibung("Filiale am Hauptbahnhof Nürnberg")
+            .setOrt("Nürnberg")
+            .build();
+
+        public static Filiale karlsruhe = new FilialeBuilder()
+            .setName("Filiale Karlsruhe-HBF")
+            .setBeschreibung("Filiale am Hauptbahnhof Karlsruhe")
+            .setOrt("Karlsruhe")
+            .build();
+
         public static Kunde peter = new KundeBuilder()
             .setName("Lustig")
             .setVorname("Peter")
@@ -28,19 +40,7 @@ namespace RestaurantWeb
             .setVorname("Paul")
             .setName("Gusto")
             .setKundennummer("Remis123")
-            .isKoch(true)
-            .build();
-
-        public static Filiale nuernberg = new FilialeBuilder()
-            .setName("Filiale Nürnberg-HBF")
-            .setBeschreibung("Filiale am Hauptbahnhof Nürnberg")
-            .setOrt("Nürnberg")
-            .build();
-
-        public static Filiale karlsruhe = new FilialeBuilder()
-            .setName("Filiale Karlsruhe-HBF")
-            .setBeschreibung("Filiale am Hauptbahnhof Karlsruhe")
-            .setOrt("Karlsruhe")
+            .isKoch(true, nuernberg)
             .build();
 
         public static Gericht pommesGross = new GerichtBuilder()

@@ -20,6 +20,7 @@
           <ScalarProperty Name="Kundennummer" ColumnName="Kundennummer" />
           <ScalarProperty Name="RoleKoch" ColumnName="RoleKoch" />
           <ScalarProperty Name="RoleUser" ColumnName="RoleUser" />
+          <ScalarProperty Name="FilialeId" ColumnName="FilialeId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

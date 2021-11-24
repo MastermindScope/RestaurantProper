@@ -22,6 +22,10 @@
       <End Role="Filiale" EntitySet="Filialen" />
       <End Role="Buchung" EntitySet="Bestellungen" />
     </AssociationSet>
+    <AssociationSet Name="KochtIn" Association="RestaurantModel.Store.KochtIn">
+      <End Role="Filiale" EntitySet="Filialen" />
+      <End Role="Kunde" EntitySet="Kunden" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Filialen">
     <Key>
@@ -42,6 +46,7 @@
     <Property Name="Kundennummer" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RoleKoch" Type="bit" Nullable="false" />
     <Property Name="RoleUser" Type="bit" Nullable="false" />
+    <Property Name="FilialeId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Bestellungen">
     <Key>
@@ -91,6 +96,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Buchung">
+        <PropertyRef Name="FilialeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KochtIn">
+    <End Role="Filiale" Type="RestaurantModel.Store.Filialen" Multiplicity="0..1" />
+    <End Role="Kunde" Type="RestaurantModel.Store.Kunden" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filiale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kunde">
         <PropertyRef Name="FilialeId" />
       </Dependent>
     </ReferentialConstraint>

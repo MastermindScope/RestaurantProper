@@ -26,8 +26,10 @@ namespace RestaurantLibDB
         public string Kundennummer { get; set; }
         public bool RoleKoch { get; set; }
         public bool RoleUser { get; set; }
+        public Nullable<int> FilialeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Buchung> HatGebucht { get; set; }
+        public virtual Filiale KochtIn { get; set; }
     }
 }

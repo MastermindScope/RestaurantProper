@@ -17,13 +17,14 @@ namespace RestaurantLibDB
 
         //constructor
 
-        public Kunde(string name, string vorname, string kundennummer, bool isKunde, bool isKoch)
+        public Kunde(string name, string vorname, string kundennummer, bool isKunde, bool isKoch, Filiale kochtIn)
         {
             Name = name;
             Vorname = vorname;
             Kundennummer = kundennummer;
             RoleUser = isKunde;
             RoleKoch = isKoch;
+            KochtIn = kochtIn;
         }
 
         //private methods

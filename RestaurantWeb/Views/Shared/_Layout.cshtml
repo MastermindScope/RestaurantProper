@@ -26,13 +26,6 @@
                     <li>@Html.ActionLink("Login", "Index", "Login")</li>
                     <li>@Html.ActionLink("Import", "Import", "Setup")</li>
                     <li>@Html.ActionLink("ClearAll", "ClearAll", "Setup")</li>
-                    @if(ViewBag.User != null){
-                        if(ViewBag.User.RoleKoch){
-                            <li>@Html.ActionLink("Essen in der nächsten Viertelstunde", "PrepareFood", "PrepareFood")</li>
-                        }
-                        if(ViewBag.User.RoleUser){
-                            <li>@Html.ActionLink("ClearAll", "ClearAll", "Setup")</li>
-                        }
                     }
                 </ul>
             </div>
