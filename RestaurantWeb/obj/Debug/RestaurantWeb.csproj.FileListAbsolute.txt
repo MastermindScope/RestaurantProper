@@ -67,3 +67,5 @@ C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantWeb\bin\roslyn\
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantWeb\bin\roslyn\System.Memory.dll
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantWeb\bin\roslyn\System.Numerics.Vectors.dll
 C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantWeb\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantWeb\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Vinzenz Götz\Desktop\Uni\SE\RestaurantProper\RestaurantWeb\bin\roslyn\System.ValueTuple.dll
