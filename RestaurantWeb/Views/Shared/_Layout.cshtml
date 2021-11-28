@@ -8,13 +8,13 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+    <div class="navbar navbar-inverse navbar-dark fixed-top bg-dark">
         <div class="container">
             <div class="navbar-header">
                 
                 @Html.ActionLink("Gaststätte Götz", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-expand expand">
                 <ul class="nav navbar-nav">
                     <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")" "</li>
                     <li class="nav-item">@Html.ActionLink("About", "About", "Home")" "</li>
@@ -22,6 +22,7 @@
                     <li class="nav-item">@Html.ActionLink("Login", "Index", "Login")" "</li>
                     <li class="nav-item">@Html.ActionLink("Import", "Import", "Setup")" "</li>
                     <li class="nav-item">@Html.ActionLink("ClearAll", "ClearAll", "Setup")" "</li>
+                    <li class="nav-item">@Html.ActionLink("Buchungen", "Index", "Buchungs")</li>
                 </ul>
             </div>
         </div>

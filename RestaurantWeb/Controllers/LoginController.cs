@@ -33,7 +33,7 @@ namespace RestaurantWeb.Controllers
                 return HttpNotFound();
             }
             setUserId(id.Value);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }
