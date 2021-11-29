@@ -16,7 +16,13 @@ namespace RestaurantWeb.Controllers
         // GET: Gerichts
         public ActionResult Index()
         {
-            return View(db.Gerichte.ToList());
+            if(hasUser() && LoggedInUser.RoleKoch)
+            {
+                return View(db.Gerichte.ToList());
+            }
+
+            return RedirectToAction("Index", "Home");
+
         }
 
         // GET: Gerichts/Details/5

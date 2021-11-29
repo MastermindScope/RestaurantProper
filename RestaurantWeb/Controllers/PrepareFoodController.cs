@@ -16,25 +16,28 @@ namespace RestaurantWeb.Controllers
         // GET: PrepareFood
         public ActionResult Index()
         {
-            if(!hasUser() | !LoggedInUser.RoleKoch) { return RedirectToAction("Index", "Home"); }
+            if(hasUser() && LoggedInUser.RoleKoch) {
+                DateTime now = DateTime.Now;
 
 
-            DateTime now = DateTime.Now;
+                var liste = db.Bestellungen
+                            .Where(b => b.Essenszeit.Year == now.Year &&
+                            b.Essenszeit.Month == now.Month &&
+                            b.Essenszeit.Day == now.Day &&
+                            -b.Essenszeit.Hour * 60 - b.Essenszeit.Minute + now.Hour * 60 + now.Minute + 33 >= 0 &&
+                            b.InFiliale.Id == LoggedInUser.KochtIn.Id)
+                            .SelectMany(b => b.EnthaeltGerichte).ToList();
 
 
-            var liste = db.Bestellungen
-                        .Where(b => b.Essenszeit.Year == now.Year &&
-                        b.Essenszeit.Month == now.Month &&
-                        b.Essenszeit.Day == now.Day &&
-                        -b.Essenszeit.Hour * 60 - b.Essenszeit.Minute + now.Hour * 60 + now.Minute + 33 >= 0 &&
-                        b.InFiliale.Id == LoggedInUser.KochtIn.Id)
-                        .SelectMany(b => b.EnthaeltGerichte).ToList();
+
+
+
+                return View(liste);
+            }
+
 
             
-            
-
-
-            return View(liste);
+            return RedirectToAction("Index", "Home");
 
         }
 
