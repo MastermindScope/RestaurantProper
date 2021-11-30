@@ -24,7 +24,8 @@ namespace RestaurantWeb.Controllers
                             .Where(b => b.Essenszeit.Year == now.Year &&
                             b.Essenszeit.Month == now.Month &&
                             b.Essenszeit.Day == now.Day &&
-                            -b.Essenszeit.Hour * 60 - b.Essenszeit.Minute + now.Hour * 60 + now.Minute + 33 >= 0 &&
+                            -b.Essenszeit.Hour * 60 - b.Essenszeit.Minute + now.Hour * 60 + now.Minute + 15 >= 0 &&
+                            -b.Essenszeit.Hour * 60 - b.Essenszeit.Minute + now.Hour * 60 + now.Minute <= 0 &&
                             b.InFiliale.Id == LoggedInUser.KochtIn.Id)
                             .SelectMany(b => b.EnthaeltGerichte).ToList();
 

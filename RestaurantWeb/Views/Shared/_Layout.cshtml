@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Gaststätte Götz</title>
+    <title>@ViewBag.UserName - Gaststätte Götz</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -20,11 +23,19 @@
                     <li class="nav-item">@Html.ActionLink("About", "About", "Home")" "</li>
                     <li class="nav-item">@Html.ActionLink("Kontakt", "Contact", "Home")" "</li>
                     <li class="nav-item">@Html.ActionLink("Login", "Index", "Login")" "</li>
-                    <li class="nav-item">@Html.ActionLink("Import", "Import", "Setup")" "</li>
-                    <li class="nav-item">@Html.ActionLink("ClearAll", "ClearAll", "Setup")" "</li>
-                    <li class="nav-item">@Html.ActionLink("Buchungen", "Index", "Buchungs")" "</li>
-                    <li class="nav-item">@Html.ActionLink("Gerichte", "Index", "Gerichts")" "</li>
-                    <li class="nav-item">@Html.ActionLink("Kochen", "Index", "PrepareFood")</li>
+                    @if (ViewBag.RoleKoch != null && ViewBag.RoleKoch)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Import", "Import", "Setup")" "</li>
+                        <li class="nav-item">@Html.ActionLink("ClearAll", "ClearAll", "Setup")" "</li>
+                        <li class="nav-item">@Html.ActionLink("Gerichte", "Index", "Gerichts")" "</li>
+                        <li class="nav-item">@Html.ActionLink("Kochen", "Index", "PrepareFood")" "</li>
+                    }
+                    @if (ViewBag.UserName != null)
+                    {
+                        string name = (string)ViewBag.UserName;
+                        <li class="nav-item">@Html.ActionLink("Buchungen", "Index", "Buchungs")" "</li>
+                        <li class="nav-item">@Html.ActionLink(name, "Index", "Home")" "</li>
+                    }
                 </ul>
             </div>
         </div>

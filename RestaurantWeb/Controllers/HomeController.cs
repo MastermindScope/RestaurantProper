@@ -10,6 +10,7 @@ namespace RestaurantWeb.Controllers
     {
         public ActionResult Index()
         {
+            setUser();
             return View();
         }
 
