@@ -15,6 +15,7 @@ namespace RestaurantLibDB.Extension
         private List<Buchung> HatGebucht = new List<Buchung>();
         private bool RoleKunde = false;
         private bool RoleKoch = false;
+        private Filiale KochtIn = null;
 
         public KundeBuilder setName(string name)
         {
@@ -54,16 +55,25 @@ namespace RestaurantLibDB.Extension
             return this;
         }
 
-        public KundeBuilder isKoch(bool val)
+        public KundeBuilder isKoch(bool val, Filiale kochtIn)
         {
-            RoleKoch = val;
-            return this;
+            if (kochtIn == null) {
+                throw new Exception("please enter a store to cook in");
+            } else {
+                RoleKoch = val;
+                KochtIn = kochtIn;
+                return this;
+            }
         }
 
         public Kunde build()
         {
-            Kunde val = new Kunde(Name, Vorname, Kundennummer, RoleKunde, RoleKoch);
+            Kunde val = new Kunde(Name, Vorname, Kundennummer, RoleKunde, RoleKoch, KochtIn);
             HatGebucht.ForEach(buch => val.AddBuchung(buch));
+            if (KochtIn != null) {
+                if(KochtIn.HatKoeche == null) { KochtIn.HatKoeche = new List<Kunde>(); }
+                KochtIn.HatKoeche.Add(val);
+            }
             return val;
         }
 

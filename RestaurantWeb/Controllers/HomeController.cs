@@ -10,19 +10,20 @@ namespace RestaurantWeb.Controllers
     {
         public ActionResult Index()
         {
+            setUser();
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Wilkommen auf der Webseite der Gaststätte Götz";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Kontaktdaten.";
 
             return View();
         }

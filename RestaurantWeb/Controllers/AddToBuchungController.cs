@@ -22,6 +22,14 @@ namespace RestaurantWeb.Controllers
             return View(db.Gerichte.ToList());
         }
 
+        public ActionResult IndexRemove(int id)
+        {
+            ViewBag.BuchungsId = id;
+            buchung = db.Bestellungen.Find(id);
+            if (buchung == null) { return HttpNotFound("could not find buchung with that id " + id); }
+            return View(buchung.EnthaeltGerichte.ToList());
+        }
+
 
         public ActionResult AddToBuchung(int? id)
         {
@@ -55,6 +63,24 @@ namespace RestaurantWeb.Controllers
             //buchung.AddGericht(gericht);
             db.Bestellungen.Find(buchung.Id).AddGericht(gericht);
             db.Bestellungen.Find(buchung.Id).EnthaeltGerichte.Add(gericht);
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Buchungs");
+        }
+
+        public ActionResult Remove(int id, int buchungsId)
+        {
+            Gericht gericht = db.Gerichte.Find(id);
+
+            if(gericht == null)
+            {
+                return HttpNotFound();
+            }
+
+            Buchung buchung = db.Bestellungen.Find(buchungsId);
+
+            db.Bestellungen.Find(buchung.Id).EnthaeltGerichte.Remove(gericht);
+            db.Gerichte.Find(gericht.Id).EnthaltenIn.Remove(buchung);
             db.SaveChanges();
 
             return RedirectToAction("Index", "Buchungs");

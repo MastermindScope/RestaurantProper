@@ -7,7 +7,6 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,21 +22,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Beschreibung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preis)
-        </td>
-        <td>
-            @Html.ActionLink("Zu Buchung hinzufügen", "Add", new { id=item.Id, buchungsId=ViewBag.BuchungsId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschreibung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preis)
+            </td>
+            <td>
+                @Html.ActionLink("Zu Buchung hinzufügen", "Add", new { id = item.Id, buchungsId = ViewBag.BuchungsId })
+            </td>
+        </tr>
+    }
+
+    <p>
+
+        
+        @Html.ActionLink("Zurück", "Index", "Buchungs")
+
+    </p>
 
 </table>

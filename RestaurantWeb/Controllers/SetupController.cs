@@ -17,24 +17,23 @@ namespace RestaurantWeb.Controllers
         {
             DemoData Dummy = new DemoData();
 
-            foreach (var k in Dummy.Kunden)
-            {
-                db.Kunden.Add(k);
-            }
-            db.SaveChanges();
-            foreach (var g in Dummy.Gerichte)
-            {
-                db.Gerichte.Add(g);
-            }
             foreach (var f in Dummy.Filialen)
             {
                 db.Filialen.Add(f);
             }
+
+            foreach (var k in Dummy.Kunden)
+            {
+                db.Kunden.Add(k);
+            }
+
             foreach (var b in Dummy.Buchungen)
             {
                 db.Bestellungen.Add(b);
             }
+            
             db.SaveChanges();
+            
 
 
             return RedirectToAction("Index", "Home");

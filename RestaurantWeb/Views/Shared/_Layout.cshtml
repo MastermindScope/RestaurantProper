@@ -1,38 +1,40 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.UserName - Gaststätte Götz</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-dark fixed-top bg-dark">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                
                 @Html.ActionLink("Gaststätte Götz", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-expand expand">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                    <li>@Html.ActionLink("Import", "Import", "Setup")</li>
-                    <li>@Html.ActionLink("ClearAll", "ClearAll", "Setup")</li>
-                    @if(ViewBag.User != null){
-                        if(ViewBag.User.RoleKoch){
-                            <li>@Html.ActionLink("Essen in der nächsten Viertelstunde", "PrepareFood", "PrepareFood")</li>
-                        }
-                        if(ViewBag.User.RoleUser){
-                            <li>@Html.ActionLink("ClearAll", "ClearAll", "Setup")</li>
-                        }
+                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home")" "</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home")" "</li>
+                    <li class="nav-item">@Html.ActionLink("Kontakt", "Contact", "Home")" "</li>
+                    <li class="nav-item">@Html.ActionLink("Login", "Index", "Login")" "</li>
+                    @if (ViewBag.RoleKoch != null && ViewBag.RoleKoch)
+                    {
+                        <li class="nav-item">@Html.ActionLink("Import", "Import", "Setup")" "</li>
+                        <li class="nav-item">@Html.ActionLink("ClearAll", "ClearAll", "Setup")" "</li>
+                        <li class="nav-item">@Html.ActionLink("Gerichte", "Index", "Gerichts")" "</li>
+                        <li class="nav-item">@Html.ActionLink("Kochen", "Index", "PrepareFood")" "</li>
+                    }
+                    @if (ViewBag.UserName != null)
+                    {
+                        string name = (string)ViewBag.UserName;
+                        <li class="nav-item">@Html.ActionLink("Buchungen", "Index", "Buchungs")" "</li>
+                        <li class="nav-item">@Html.ActionLink(name, "Index", "Home")" "</li>
                     }
                 </ul>
             </div>
@@ -42,7 +44,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Vinzenz Götz</p>
         </footer>
     </div>
 

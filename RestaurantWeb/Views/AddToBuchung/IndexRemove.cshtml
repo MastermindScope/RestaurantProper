@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RestaurantLibDB.Gericht>
+
+@{
+    ViewBag.Title = "IndexRemove";
+}
+
+<h2>Index</h2>
+
+<p>
+    
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beschreibung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Preis)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beschreibung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preis)
+            </td>
+            <td>
+                @Html.ActionLink("Von Buchung entfernen", "Remove", new { id = item.Id, buchungsId = ViewBag.BuchungsId })
+            </td>
+        </tr>
+    }
+
+    <p>
+
+
+        @Html.ActionLink("Zurück", "Index", "Buchungs")
+
+    </p>
+
+</table>

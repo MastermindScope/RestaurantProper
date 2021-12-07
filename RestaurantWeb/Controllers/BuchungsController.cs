@@ -21,11 +21,13 @@ namespace RestaurantWeb.Controllers
                 if (LoggedInUser.RoleUser == true)
                 {
                     var bestellungen = db.Bestellungen.Where(b => b.GebuchtVon.Id == LoggedInUser.Id).Include(b => b.GebuchtVon).Include(b => b.InFiliale);
+                    ViewBag.User = LoggedInUser;
                     return View(bestellungen.ToList());
                 }
                 else if (LoggedInUser.RoleKoch == true)
                 {
                     var bestellungen = db.Bestellungen.Include(b => b.GebuchtVon).Include(b => b.InFiliale);
+                    ViewBag.User = LoggedInUser;
                     return View(bestellungen.ToList());
                 }
             }
@@ -180,6 +182,21 @@ namespace RestaurantWeb.Controllers
                 return HttpNotFound();
             }
             return RedirectToAction("Index", "AddToBuchung", new { id = idStorage });
+        }
+
+        public ActionResult RemoveGericht(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Buchung buchung = db.Bestellungen.Find(id);
+            idStorage = (int)id;
+            if (buchung == null)
+            {
+                return HttpNotFound();
+            }
+            return RedirectToAction("IndexRemove", "AddToBuchung", new { id = idStorage });
         }
 
 

@@ -18,6 +18,7 @@ namespace RestaurantLibDB
         public Filiale()
         {
             this.HatBuchung = new HashSet<Buchung>();
+            this.HatKoeche = new HashSet<Kunde>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace RestaurantLibDB
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Buchung> HatBuchung { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kunde> HatKoeche { get; set; }
     }
 }

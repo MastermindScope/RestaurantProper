@@ -12,6 +12,7 @@
         <AssociationConnector Association="RestaurantModel.EnthaeltGericht" />
         <AssociationConnector Association="RestaurantModel.GebuchtVon" />
         <AssociationConnector Association="RestaurantModel.FilialeBuchung" />
+        <AssociationConnector Association="RestaurantModel.KochtIn" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

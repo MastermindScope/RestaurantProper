@@ -17,6 +17,10 @@
       <End Role="Filiale" EntitySet="Filialen" />
       <End Role="Buchung" EntitySet="Bestellungen" />
     </AssociationSet>
+    <AssociationSet Name="KochtIn" Association="RestaurantModel.KochtIn">
+      <End Role="Filiale" EntitySet="Filialen" />
+      <End Role="Kunde" EntitySet="Kunden" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Filiale">
     <Key>
@@ -27,6 +31,7 @@
     <Property Name="Beschreibung" Type="String" Nullable="false" />
     <Property Name="Ort" Type="String" Nullable="false" />
     <NavigationProperty Name="HatBuchung" Relationship="RestaurantModel.FilialeBuchung" FromRole="Filiale" ToRole="Buchung" />
+    <NavigationProperty Name="HatKoeche" Relationship="RestaurantModel.KochtIn" FromRole="Filiale" ToRole="Kunde" />
   </EntityType>
   <EntityType Name="Kunde">
     <Key>
@@ -39,6 +44,8 @@
     <NavigationProperty Name="HatGebucht" Relationship="RestaurantModel.GebuchtVon" FromRole="Kunde" ToRole="Buchung" />
     <Property Name="RoleKoch" Type="Boolean" Nullable="false" />
     <Property Name="RoleUser" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="KochtIn" Relationship="RestaurantModel.KochtIn" FromRole="Kunde" ToRole="Filiale" />
+    <Property Name="FilialeId" Type="Int32" Nullable="true" />
   </EntityType>
   <EntityType Name="Buchung">
     <Key>
@@ -88,6 +95,18 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Buchung">
+        <PropertyRef Name="FilialeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KochtIn">
+    <End Type="RestaurantModel.Filiale" Role="Filiale" Multiplicity="0..1" />
+    <End Type="RestaurantModel.Kunde" Role="Kunde" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Filiale">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kunde">
         <PropertyRef Name="FilialeId" />
       </Dependent>
     </ReferentialConstraint>
